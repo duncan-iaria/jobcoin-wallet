@@ -1,19 +1,57 @@
-import React from 'react';
-import {
-  Text,
-  View,
-  StatusBar,
-  SafeAreaView,
-  useColorScheme,
-} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, StyleSheet, TextInput} from 'react-native';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-export const SignInScreen = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+import {Screens, RootStackParamList} from '../navigation';
+import {Screen, PrimaryButton} from '../components';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    margin: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+export const SignInScreen = ({
+  navigation,
+  route,
+}: NativeStackScreenProps<RootStackParamList, Screens.SignIn>) => {
+  const [accountString, setAccountString] = useState('');
+
+  const onLogin = () => {
+    if (accountString.length === 0) {
+      return;
+    }
+
+    navigation.navigate(Screens.Account, {accountId: accountString});
+  };
+
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Sign in screen...</Text>
+    <Screen>
+      <View style={styles.container}>
+        <TextInput
+          style={{
+            width: '70%',
+            backgroundColor: 'white',
+            marginBottom: 12,
+            height: 48,
+            padding: 12,
+            borderColor: 'black',
+            borderRadius: 12,
+            borderWidth: 3,
+          }}
+          onChangeText={setAccountString}
+          value={accountString}></TextInput>
+        <PrimaryButton
+          onPress={() => {
+            console.log('hey');
+            onLogin();
+          }}>
+          <Text>LOGIN</Text>
+        </PrimaryButton>
       </View>
-    </SafeAreaView>
+    </Screen>
   );
 };
