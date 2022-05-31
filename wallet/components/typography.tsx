@@ -1,8 +1,9 @@
 import React from 'react';
-
 import {Text, TextProps, StyleSheet} from 'react-native';
 
-const DEFAULT_COLOR = 'white';
+import {colors} from './theme';
+
+const DEFAULT_COLOR = colors.black;
 const BASE_TEXT = {
   fontSize: 16,
   color: DEFAULT_COLOR,
@@ -11,6 +12,10 @@ const BASE_TEXT = {
 const styles = StyleSheet.create({
   bodyText: {
     ...BASE_TEXT,
+  },
+  buttonText: {
+    ...BASE_TEXT,
+    fontWeight: '600',
   },
   h1: {
     ...BASE_TEXT,
@@ -22,6 +27,14 @@ const styles = StyleSheet.create({
 export const BodyText = (props: TextProps) => {
   return (
     <Text style={styles.bodyText} {...props}>
+      {props.children}
+    </Text>
+  );
+};
+
+export const ButtonText = (props: TextProps) => {
+  return (
+    <Text style={styles.buttonText} {...props}>
       {props.children}
     </Text>
   );

@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, TextInput} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {Screens, RootStackParamList} from '../navigation';
-import {Screen, PrimaryButton} from '../components';
+import {Screen, PrimaryButton, ButtonText} from '../components';
 
 const styles = StyleSheet.create({
   container: {
@@ -49,7 +49,7 @@ export const SignInScreen = ({
             console.log('hey');
             onLogin();
           }}>
-          <Text>LOGIN</Text>
+          <ButtonText>LOGIN</ButtonText>
         </PrimaryButton>
       </View>
     </Screen>

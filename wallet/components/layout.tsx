@@ -4,7 +4,7 @@ import {View, StyleSheet, ViewProps, SafeAreaView} from 'react-native';
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#333',
+    backgroundColor: '#fff2d1',
   },
   container: {
     flex: 1,

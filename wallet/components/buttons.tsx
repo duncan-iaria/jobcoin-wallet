@@ -1,6 +1,10 @@
 import React from 'react';
 import {Pressable, PressableProps, StyleSheet, View} from 'react-native';
 
+import {colors} from './theme';
+
+// #2d1f10 -2px 2px 0px 0px
+
 const styles = StyleSheet.create({
   primaryButton: {
     width: 100,
@@ -8,8 +12,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
-    color: '#333',
-    backgroundColor: 'gold',
+    color: colors.black,
+    backgroundColor: colors.primary,
+    shadowColor: colors.black,
+    shadowRadius: 0,
+    shadowOpacity: 1,
+    shadowOffset: {width: -4, height: 4},
+    borderColor: colors.black,
+    borderWidth: 2,
   },
   pressedPrimaryButton: {
     width: 100,
@@ -17,8 +27,15 @@ const styles = StyleSheet.create({
     height: 48,
     justifyContent: 'center',
     alignItems: 'center',
-    color: '#333',
-    backgroundColor: 'orange',
+    color: colors.black,
+    backgroundColor: colors.primary,
+    borderColor: colors.black,
+    borderWidth: 2,
+    shadowColor: colors.black,
+    shadowRadius: 0,
+    shadowOpacity: 0,
+    shadowOffset: {width: 0, height: 0},
+    transform: [{translateY: 4}, {translateX: -4}],
   },
   inset: {
     justifyContent: 'center',
@@ -27,7 +44,7 @@ const styles = StyleSheet.create({
     width: 94,
     height: 42,
     borderWidth: 3,
-    borderColor: '#333',
+    borderColor: 'transparent',
   },
 });
 

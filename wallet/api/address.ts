@@ -1,15 +1,10 @@
 import {API_URL} from 'react-native-dotenv';
 
+import {Transaction} from '../types';
 export interface AccountResponse {
   balance: string;
   transactions: Transaction[];
 }
-
-type Transaction = {
-  timestamp: Date;
-  toAddress: string;
-  amount: string;
-};
 
 export const mockAccountResponse = {
   balance: '38',
