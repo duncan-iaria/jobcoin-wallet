@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, TextInput} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {Screens, RootStackParamList} from '../navigation';
-import {Screen, PrimaryButton, ButtonText} from '../components';
+import {
+  Screen,
+  PrimaryButton,
+  ButtonText,
+  JobCoinTextInput,
+} from '../components';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,7 +21,6 @@ const styles = StyleSheet.create({
 
 export const SignInScreen = ({
   navigation,
-  route,
 }: NativeStackScreenProps<RootStackParamList, Screens.SignIn>) => {
   const [accountString, setAccountString] = useState('');
 
@@ -31,19 +35,10 @@ export const SignInScreen = ({
   return (
     <Screen>
       <View style={styles.container}>
-        <TextInput
-          style={{
-            width: '70%',
-            backgroundColor: 'white',
-            marginBottom: 12,
-            height: 48,
-            padding: 12,
-            borderColor: 'black',
-            borderRadius: 12,
-            borderWidth: 3,
-          }}
+        <JobCoinTextInput
           onChangeText={setAccountString}
-          value={accountString}></TextInput>
+          value={accountString}
+        />
         <PrimaryButton
           onPress={() => {
             console.log('hey');
