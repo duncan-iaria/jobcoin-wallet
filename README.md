@@ -10,6 +10,23 @@ The Jobcoin™ wallet is meant to allow for easily log in, an intuitive account 
 ![Jobcoin Account Screen](assets/Jobcoin_AccountScreen.png)
 ![Jobcoin In Action!](assets/Jobcoin_01_sm.gif)
 
+## About the Project
+
+It uses:
+
+- React Native
+- Typescript
+- React Query
+- Line Chart - @connectedcars/react-native-slide-charts
+- Time/Dates - date-fns
+
+### To Start
+
+- `cd wallet`
+- `npm i && npm start`
+- I've been using xcode - open Xcode and open the workspace file in the `ios` folder
+- That should be it 🎉
+
 ## Development Notes
 
 My primary focus was to make an intuitive app that was aesthetically pleasing. I spent around 10 hours on this (way more than I was suppose to).
