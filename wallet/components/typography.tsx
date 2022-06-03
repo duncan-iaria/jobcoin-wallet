@@ -22,27 +22,70 @@ const styles = StyleSheet.create({
     fontSize: BASE_TEXT.fontSize * 4,
     fontWeight: 'bold',
   },
+  h2: {
+    ...BASE_TEXT,
+    fontSize: BASE_TEXT.fontSize * 2,
+    fontWeight: 'bold',
+  },
+  linkText: {
+    ...BASE_TEXT,
+    textDecorationLine: 'underline',
+  },
+  subText: {
+    fontSize: 10,
+    color: colors.subText,
+  },
 });
 
 export const BodyText = (props: TextProps) => {
+  const {style} = props;
   return (
-    <Text style={styles.bodyText} {...props}>
+    <Text {...props} style={[styles.bodyText, style]}>
       {props.children}
     </Text>
   );
 };
 
 export const ButtonText = (props: TextProps) => {
+  const {style} = props;
   return (
-    <Text style={styles.buttonText} {...props}>
+    <Text {...props} style={[styles.buttonText, style]}>
       {props.children}
     </Text>
   );
 };
 
 export const H1Text = (props: TextProps) => {
+  const {style} = props;
   return (
-    <Text style={styles.h1} {...props}>
+    <Text {...props} style={[styles.h1, style]}>
+      {props.children}
+    </Text>
+  );
+};
+
+export const H2Text = (props: TextProps) => {
+  const {style} = props;
+  return (
+    <Text {...props} style={[styles.h2, style]}>
+      {props.children}
+    </Text>
+  );
+};
+
+export const LinkText = (props: TextProps) => {
+  const {style} = props;
+  return (
+    <Text {...props} style={[styles.linkText, style]}>
+      {props.children}
+    </Text>
+  );
+};
+
+export const SubText = (props: TextProps) => {
+  const {style} = props;
+  return (
+    <Text {...props} style={[styles.subText, style]}>
       {props.children}
     </Text>
   );

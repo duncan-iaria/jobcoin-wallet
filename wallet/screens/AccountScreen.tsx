@@ -1,15 +1,16 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {format} from 'date-fns';
 
 import {useAccount} from '../hooks';
 import {
   Screen,
-  BodyText,
   H1Text,
-  BalanceLineChart3,
+  BalanceLineChart,
   CoinTransfer,
+  BalanceDisplay,
+  LinkButton,
 } from '../components';
 import {RootStackParamList, Screens} from '../navigation';
 
@@ -17,9 +18,8 @@ export const AccountScreen = ({
   navigation,
   route,
 }: NativeStackScreenProps<RootStackParamList, Screens.Account>) => {
-  const {data, isLoading, transactionsByDay} = useAccount(
-    route.params.accountId,
-  );
+  const accountAddress = route.params.accountId;
+  const {data, isLoading, transactionsByDay} = useAccount(accountAddress);
 
   const chartLabels = transactionsByDay?.map(tempTransaction =>
     format(tempTransaction.day, 'do'),
@@ -33,22 +33,36 @@ export const AccountScreen = ({
 
   return (
     <Screen>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        {/* TODO Clean up nested ternary */}
-        {isLoading ? (
-          <H1Text>Loading...</H1Text>
-        ) : chartData ? (
-          <>
-            {/* <BalanceLineChart labels={chartLabels} data={chartData} /> */}
-            <BalanceLineChart3 data={chartData} markerLabels={chartLabels} />
-            <BodyText>Balance</BodyText>
-            <H1Text>{data?.balance}</H1Text>
-            <CoinTransfer />
-          </>
-        ) : (
-          <BodyText>Fund ME</BodyText>
-        )}
-      </ScrollView>
+      <KeyboardAvoidingView
+        style={{flex: 1}}
+        enabled
+        behavior="position"
+        keyboardVerticalOffset={20}>
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
+          {isLoading ? (
+            <H1Text>Loading...</H1Text>
+          ) : (
+            <>
+              <BalanceLineChart data={chartData} markerLabels={chartLabels} />
+              {/* <View style={{backgroundColor: 'rgb(253, 237, 195)'}}> */}
+              <BalanceDisplay balance={data?.balance} />
+              <CoinTransfer
+                accountAddress={accountAddress}
+                balance={data?.balance}
+              />
+              <View
+                style={{
+                  flex: 1,
+                  marginTop: 20,
+                  alignItems: 'center',
+                }}>
+                <LinkButton onPress={navigation.goBack}>Logout</LinkButton>
+              </View>
+              {/* </View> */}
+            </>
+          )}
+        </ScrollView>
+      </KeyboardAvoidingView>
     </Screen>
   );
 };

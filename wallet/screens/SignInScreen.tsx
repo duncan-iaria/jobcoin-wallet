@@ -7,17 +7,9 @@ import {
   Screen,
   PrimaryButton,
   ButtonText,
+  H2Text,
   JobCoinTextInput,
 } from '../components';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export const SignInScreen = ({
   navigation,
@@ -35,6 +27,7 @@ export const SignInScreen = ({
   return (
     <Screen>
       <View style={styles.container}>
+        <H2Text style={styles.titleText}>Job Coin™</H2Text>
         <JobCoinTextInput
           onChangeText={setAccountString}
           value={accountString}
@@ -50,3 +43,15 @@ export const SignInScreen = ({
     </Screen>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    margin: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  titleText: {
+    marginBottom: 8,
+  },
+});

@@ -17,11 +17,14 @@ const App = () => {
           <AppStack.Screen
             name={Screens.SignIn}
             component={SignInScreen}
-            options={{title: 'JobCoin Sign In'}}></AppStack.Screen>
+            options={{
+              title: 'JobCoin Sign In',
+              headerShown: false,
+            }}></AppStack.Screen>
           <AppStack.Screen
             name={Screens.Account}
             component={AccountScreen}
-            options={{title: 'Account'}}></AppStack.Screen>
+            options={{title: 'Account', headerShown: false}}></AppStack.Screen>
         </AppStack.Navigator>
       </QueryClientProvider>
     </NavigationContainer>

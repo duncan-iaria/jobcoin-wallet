@@ -2,8 +2,7 @@ import React from 'react';
 import {Pressable, PressableProps, StyleSheet, View} from 'react-native';
 
 import {colors} from './theme';
-
-// #2d1f10 -2px 2px 0px 0px
+import {LinkText} from './typography';
 
 const styles = StyleSheet.create({
   primaryButton: {
@@ -46,16 +45,28 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'transparent',
   },
+  linkButton: {},
 });
 
 export const PrimaryButton = (props: PressableProps) => {
   return (
     <Pressable
+      {...props}
+      //@ts-ignore Typescript is trippin' here
       style={({pressed}) =>
-        pressed ? styles.pressedPrimaryButton : styles.primaryButton
-      }
-      {...props}>
+        pressed
+          ? [styles.pressedPrimaryButton, props.style]
+          : [styles.primaryButton, props.style]
+      }>
       <View style={styles.inset}>{props.children}</View>
+    </Pressable>
+  );
+};
+
+export const LinkButton = (props: PressableProps) => {
+  return (
+    <Pressable {...props}>
+      <LinkText>{props.children}</LinkText>
     </Pressable>
   );
 };

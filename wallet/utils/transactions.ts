@@ -18,6 +18,7 @@ export const groupTransactionsByDay = (
     return null;
   }
 
+  const transactionsToReturn = 7;
   const today = new Date();
   const originalFundingDate = parseISO(transactions[0].timestamp);
 
@@ -67,6 +68,10 @@ export const groupTransactionsByDay = (
       [] as BalanceOverTime[],
     );
 
-    return transactionsGroupedByDay.slice(-7);
+    if (transactionsGroupedByDay.length < transactionsToReturn) {
+      // Load up with empty txs
+    }
+
+    return transactionsGroupedByDay.slice(-transactionsToReturn);
   }
 };

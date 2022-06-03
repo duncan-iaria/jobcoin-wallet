@@ -6,6 +6,7 @@ import {colors} from './theme';
 const styles = StyleSheet.create({
   textInput: {
     width: '70%',
+    minWidth: '70%',
     backgroundColor: colors.white,
     marginBottom: 12,
     height: 48,
@@ -16,11 +17,18 @@ const styles = StyleSheet.create({
   },
 });
 
-export const JobCoinTextInput = (props: TextInputProps) => (
-  <TextInput
-    style={styles.textInput}
-    onChangeText={props.onChangeText}
-    value={props.value}
-    {...props}
-  />
+export const JobCoinTextInput = React.forwardRef(
+  (props: TextInputProps, ref) => {
+    const {style} = props;
+    return (
+      <TextInput
+        {...props}
+        //@ts-ignore uses legacy Ref which is an incompatible type -- figure this out
+        ref={ref}
+        style={[styles.textInput, style]}
+        onChangeText={props.onChangeText}
+        value={props.value}
+      />
+    );
+  },
 );

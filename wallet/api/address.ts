@@ -6,17 +6,6 @@ export interface AccountResponse {
   transactions: Transaction[];
 }
 
-export const mockAccountResponse = {
-  balance: '38',
-  transactions: [
-    {
-      timestamp: '2022-05-28T15:35:04.846Z',
-      toAddress: 'Doinkin',
-      amount: '50',
-    },
-  ],
-};
-
 export async function getAccount(
   accountAddress: string,
 ): Promise<AccountResponse> {
@@ -37,3 +26,14 @@ export async function getAccount(
     );
   }
 }
+
+export const mockAccountResponse = {
+  balance: '38',
+  transactions: [
+    {
+      timestamp: '2022-05-28T15:35:04.846Z',
+      toAddress: 'Doinkin',
+      amount: '50',
+    },
+  ],
+};
