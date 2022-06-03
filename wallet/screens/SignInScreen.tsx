@@ -28,7 +28,7 @@ export const SignInScreen = ({
   return (
     <Screen>
       <View style={styles.container}>
-        <H2Text style={styles.titleText}>Job Coin™</H2Text>
+        <H2Text style={styles.titleText}>Jobcoin™</H2Text>
         <JobCoinTextInput
           onChangeText={setAccountString}
           value={accountString}

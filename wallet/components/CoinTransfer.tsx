@@ -50,7 +50,7 @@ export const CoinTransfer = ({accountAddress, balance = '0'}: Props) => {
     <View style={styles.container}>
       <View>
         <BodyText style={styles.errorText}>{error || ''}</BodyText>
-        <BodyText style={styles.titleText}>Transfer Job Coins</BodyText>
+        <BodyText style={styles.titleText}>Transfer Jobcoins™</BodyText>
         <JobCoinTextInput
           value={transferAddress}
           keyboardType="email-address"

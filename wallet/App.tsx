@@ -18,7 +18,7 @@ const App = () => {
             name={Screens.SignIn}
             component={SignInScreen}
             options={{
-              title: 'JobCoin Sign In',
+              title: 'Jobcoin Sign In',
               headerShown: false,
             }}></AppStack.Screen>
           <AppStack.Screen
