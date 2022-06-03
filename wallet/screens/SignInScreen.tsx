@@ -21,6 +21,7 @@ export const SignInScreen = ({
       return;
     }
 
+    setAccountString('');
     navigation.navigate(Screens.Account, {accountId: accountString});
   };
 
@@ -32,11 +33,7 @@ export const SignInScreen = ({
           onChangeText={setAccountString}
           value={accountString}
         />
-        <PrimaryButton
-          onPress={() => {
-            console.log('hey');
-            onLogin();
-          }}>
+        <PrimaryButton onPress={onLogin}>
           <ButtonText>LOGIN</ButtonText>
         </PrimaryButton>
       </View>

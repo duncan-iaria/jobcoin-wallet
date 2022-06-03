@@ -4,15 +4,6 @@ import {SlideAreaChart} from '@connectedcars/react-native-slide-charts';
 
 import {colors} from './theme';
 
-const defaultAreaChartFillGradient = (props: any) => {
-  return (
-    <LinearGradient x1="50%" y1="0%" x2="50%" y2="100%" {...props}>
-      <Stop stopColor="#eba500" offset="0%" stopOpacity="0.2" />
-      <Stop stopColor="#f2d88c" offset="100%" stopOpacity="0.05" />
-    </LinearGradient>
-  );
-};
-
 export const BalanceLineChart = ({data, markerLabels}: any) => {
   return (
     <SlideAreaChart
@@ -57,5 +48,14 @@ export const BalanceLineChart = ({data, markerLabels}: any) => {
         borderRadius: 4,
       }}
     />
+  );
+};
+
+const defaultAreaChartFillGradient = (props: any) => {
+  return (
+    <LinearGradient x1="50%" y1="0%" x2="50%" y2="100%" {...props}>
+      <Stop stopColor="#eba500" offset="0%" stopOpacity="0.2" />
+      <Stop stopColor="#f2d88c" offset="100%" stopOpacity="0.05" />
+    </LinearGradient>
   );
 };

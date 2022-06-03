@@ -1,15 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, ViewProps, SafeAreaView} from 'react-native';
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: '#fff2d1',
-  },
-  container: {
-    flex: 1,
-  },
-});
+import {
+  View,
+  StyleSheet,
+  ViewProps,
+  SafeAreaView,
+  Dimensions,
+} from 'react-native';
 
 export const Screen = (props: ViewProps) => {
   return (
@@ -20,3 +16,16 @@ export const Screen = (props: ViewProps) => {
     </SafeAreaView>
   );
 };
+
+const screenHeight = Dimensions.get('window').height;
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: '#fff2d1',
+  },
+  container: {
+    flex: 1,
+    height: screenHeight,
+  },
+});

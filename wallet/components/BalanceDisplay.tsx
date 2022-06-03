@@ -10,7 +10,7 @@ interface Props {
 export const BalanceDisplay = ({balance}: Props) => {
   return (
     <View style={styles.container}>
-      <H1Text style={styles.balanceText}>{balance ? balance : '-'}</H1Text>
+      <H1Text>{balance ? balance : '-'}</H1Text>
       <BodyText style={styles.titleText}>Current Balance</BodyText>
     </View>
   );
@@ -27,9 +27,5 @@ const styles = StyleSheet.create({
   titleText: {
     width: 60,
     marginHorizontal: 8,
-  },
-  balanceText: {
-    // flex: 1,
-    // backgroundColor: 'red',
   },
 });

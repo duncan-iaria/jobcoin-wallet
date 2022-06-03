@@ -3,40 +3,6 @@ import {Text, TextProps, StyleSheet} from 'react-native';
 
 import {colors} from './theme';
 
-const DEFAULT_COLOR = colors.black;
-const BASE_TEXT = {
-  fontSize: 16,
-  color: DEFAULT_COLOR,
-};
-
-const styles = StyleSheet.create({
-  bodyText: {
-    ...BASE_TEXT,
-  },
-  buttonText: {
-    ...BASE_TEXT,
-    fontWeight: '600',
-  },
-  h1: {
-    ...BASE_TEXT,
-    fontSize: BASE_TEXT.fontSize * 4,
-    fontWeight: 'bold',
-  },
-  h2: {
-    ...BASE_TEXT,
-    fontSize: BASE_TEXT.fontSize * 2,
-    fontWeight: 'bold',
-  },
-  linkText: {
-    ...BASE_TEXT,
-    textDecorationLine: 'underline',
-  },
-  subText: {
-    fontSize: 10,
-    color: colors.subText,
-  },
-});
-
 export const BodyText = (props: TextProps) => {
   const {style} = props;
   return (
@@ -90,3 +56,37 @@ export const SubText = (props: TextProps) => {
     </Text>
   );
 };
+
+const DEFAULT_COLOR = colors.black;
+const BASE_TEXT = {
+  fontSize: 16,
+  color: DEFAULT_COLOR,
+};
+
+const styles = StyleSheet.create({
+  bodyText: {
+    ...BASE_TEXT,
+  },
+  buttonText: {
+    ...BASE_TEXT,
+    fontWeight: '600',
+  },
+  h1: {
+    ...BASE_TEXT,
+    fontSize: BASE_TEXT.fontSize * 4,
+    fontWeight: 'bold',
+  },
+  h2: {
+    ...BASE_TEXT,
+    fontSize: BASE_TEXT.fontSize * 2,
+    fontWeight: 'bold',
+  },
+  linkText: {
+    ...BASE_TEXT,
+    textDecorationLine: 'underline',
+  },
+  subText: {
+    fontSize: 10,
+    color: colors.subText,
+  },
+});

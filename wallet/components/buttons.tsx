@@ -4,6 +4,31 @@ import {Pressable, PressableProps, StyleSheet, View} from 'react-native';
 import {colors} from './theme';
 import {LinkText} from './typography';
 
+export const PrimaryButton = (props: PressableProps) => {
+  return (
+    <Pressable
+      {...props}
+      //@ts-ignore Typescript is trippin' here
+      style={({pressed}) =>
+        pressed
+          ? [styles.pressedPrimaryButton, props.style]
+          : [styles.primaryButton, props.style]
+      }>
+      <View style={styles.inset}>{props.children}</View>
+    </Pressable>
+  );
+};
+
+export const LinkButton = (props: PressableProps) => {
+  return (
+    <Pressable {...props}>
+      <LinkText>{props.children}</LinkText>
+    </Pressable>
+  );
+};
+
+// I bet this style for the buttons will NOT work on Android at the moment
+// Due to the different ways drop shadow works between platforms :\
 const styles = StyleSheet.create({
   primaryButton: {
     width: 100,
@@ -45,28 +70,4 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'transparent',
   },
-  linkButton: {},
 });
-
-export const PrimaryButton = (props: PressableProps) => {
-  return (
-    <Pressable
-      {...props}
-      //@ts-ignore Typescript is trippin' here
-      style={({pressed}) =>
-        pressed
-          ? [styles.pressedPrimaryButton, props.style]
-          : [styles.primaryButton, props.style]
-      }>
-      <View style={styles.inset}>{props.children}</View>
-    </Pressable>
-  );
-};
-
-export const LinkButton = (props: PressableProps) => {
-  return (
-    <Pressable {...props}>
-      <LinkText>{props.children}</LinkText>
-    </Pressable>
-  );
-};

@@ -32,12 +32,18 @@ export const CoinTransfer = ({accountAddress, balance = '0'}: Props) => {
       setError('You need more coin!');
       return;
     }
+    try {
+      transferCoins({
+        amount: parseFloat(amount),
+        toAddress: transferAddress,
+        fromAddress: accountAddress,
+      });
 
-    transferCoins({
-      amount: parseFloat(amount),
-      toAddress: transferAddress,
-      fromAddress: accountAddress,
-    });
+      setTransferAddress('');
+      setAmount('');
+    } catch (error: any) {
+      setError(error || error?.message || 'Something went wrong...');
+    }
   };
 
   return (

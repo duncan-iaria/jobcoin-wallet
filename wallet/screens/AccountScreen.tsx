@@ -1,12 +1,18 @@
 import React from 'react';
-import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  View,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {format} from 'date-fns';
 
 import {useAccount} from '../hooks';
 import {
   Screen,
-  H1Text,
+  H2Text,
   BalanceLineChart,
   CoinTransfer,
   BalanceDisplay,
@@ -29,36 +35,32 @@ export const AccountScreen = ({
     return {x: tempTransaction.day, y: tempTransaction.balance};
   });
 
-  console.log('chartData', chartData);
+  // Leaving this in here so you can take a quick look at
+  // The resulting data — if you want to
+  // console.log('chartData', chartData);
 
   return (
     <Screen>
       <KeyboardAvoidingView
-        style={{flex: 1}}
         enabled
         behavior="position"
         keyboardVerticalOffset={20}>
         <ScrollView contentInsetAdjustmentBehavior="automatic">
           {isLoading ? (
-            <H1Text>Loading...</H1Text>
+            <View style={styles.loadingContainer}>
+              <H2Text>Loading...</H2Text>
+            </View>
           ) : (
             <>
               <BalanceLineChart data={chartData} markerLabels={chartLabels} />
-              {/* <View style={{backgroundColor: 'rgb(253, 237, 195)'}}> */}
               <BalanceDisplay balance={data?.balance} />
               <CoinTransfer
                 accountAddress={accountAddress}
                 balance={data?.balance}
               />
-              <View
-                style={{
-                  flex: 1,
-                  marginTop: 20,
-                  alignItems: 'center',
-                }}>
+              <View style={styles.linkButtonContainer}>
                 <LinkButton onPress={navigation.goBack}>Logout</LinkButton>
               </View>
-              {/* </View> */}
             </>
           )}
         </ScrollView>
@@ -66,3 +68,19 @@ export const AccountScreen = ({
     </Screen>
   );
 };
+
+const screenHeight = Dimensions.get('window').height;
+
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    height: screenHeight,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  linkButtonContainer: {
+    flex: 1,
+    marginTop: 20,
+    alignItems: 'center',
+  },
+});

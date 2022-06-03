@@ -2,8 +2,7 @@ import {isSameDay, eachDayOfInterval, parseISO} from 'date-fns';
 
 import {Transaction} from '../types';
 
-// TODO rename this
-type BalanceOverTime = {
+type TransactionsGroupedByDay = {
   balance: number;
   balanceChanges: number[];
   day: Date;
@@ -13,7 +12,7 @@ export const groupTransactionsByDay = (
   accountAddress: string,
   transactions?: Transaction[],
 ) => {
-  console.log('Grouping TXs...');
+  console.log('Grouping TXs by day...');
   if (!transactions || transactions.length === 0) {
     return null;
   }
@@ -46,11 +45,11 @@ export const groupTransactionsByDay = (
 
         const balanceChanges = txsOnDay.map(tempTransaction => {
           return tempTransaction.toAddress === accountAddress
-            ? parseFloat(tempTransaction.amount)
-            : -tempTransaction.amount;
+            ? parseFloat(tempTransaction.amount) // Sent TO this address (net positive change)
+            : -tempTransaction.amount; // Sent FROM this address (net negative change)
         });
 
-        const change = balanceChanges.reduce(
+        const dailyChange = balanceChanges.reduce(
           (acc, currentBalanceChange) => acc + currentBalanceChange,
           0,
         );
@@ -61,16 +60,14 @@ export const groupTransactionsByDay = (
             day: currentDay,
             balanceChanges,
             balance:
-              index === 0 ? change : accumulator[index - 1].balance + change,
+              index === 0
+                ? dailyChange
+                : accumulator[index - 1].balance + dailyChange,
           },
         ];
       },
-      [] as BalanceOverTime[],
+      [] as TransactionsGroupedByDay[],
     );
-
-    if (transactionsGroupedByDay.length < transactionsToReturn) {
-      // Load up with empty txs
-    }
 
     return transactionsGroupedByDay.slice(-transactionsToReturn);
   }
