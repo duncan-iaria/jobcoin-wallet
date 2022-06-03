@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   titleText: {
     width: 60,
     marginHorizontal: 8,
-    textAlign: 'right',
   },
   balanceText: {
     // flex: 1,
