@@ -6,9 +6,12 @@ The Jobcoin™ wallet is meant to allow for easily log in, an intuitive account 
 
 ## App
 
+![Jobcoin In Action!](assets/Jobcoin_01_sm.gif)
+
+### Still Images
+
 ![Jobcoin Sign In Screen](assets/Jobcoin_SignIn.png)
 ![Jobcoin Account Screen](assets/Jobcoin_AccountScreen.png)
-![Jobcoin In Action!](assets/Jobcoin_01_sm.gif)
 
 ## About the Project
 
