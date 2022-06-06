@@ -4,11 +4,21 @@
 
 The Jobcoin™ wallet is meant to allow for easily log in, an intuitive account view, and easy transfer of Jobcoins™.
 
+### Active Accounts:
+
+- Bob
+- Alice
+- Duncan
+- Doinkin
+- Sophie
+- Rhiannon
+
 ## App
 
 ![Jobcoin In Action!](assets/Jobcoin_01_sm.gif)
 
 ### Still Images
+
 <div>
 <img src="assets/Jobcoin_SignIn.png" alt="Sign In Screen" width="300">
 <img src="assets/Jobcoin_AccountScreen.png" alt="Account Screen" width="300">
